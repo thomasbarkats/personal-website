@@ -1,7 +1,6 @@
 import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import PropTypes from 'prop-types';
 import DecryptedText from '../../blocks/TextAnimations/DecryptedText/DecryptedText';
-import { FadeContentPrintable } from '../FadeContentPrintable';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
@@ -33,36 +32,34 @@ export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
           </h2>
 
           {/* Contact details */}
-          <FadeContentPrintable blur={true} threshold={0} duration={200} delay={100}>
-            <div className={`flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-sm sm:text-base transition-colors duration-300 ${getTextColor('secondary')}`}>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <MapPin size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <span>{personalInfo.location}</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Phone size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <span>{personalInfo.phone}</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <a href={`mailto:${personalInfo.email}`} className={`break-all transition-colors duration-300 ${link}`}>
-                  {personalInfo.email}
-                </a>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Linkedin size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noreferrer" className={`break-all transition-colors duration-300 ${link}`}>
-                  {personalInfo.linkedin}
-                </a>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <a href={`https://${personalInfo.github}`} target="_blank" rel="noreferrer" className={`break-all transition-colors duration-300 ${link}`}>
-                  {personalInfo.github}
-                </a>
-              </div>
+          <div className={`flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-sm sm:text-base transition-colors duration-300 ${getTextColor('secondary')}`}>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <MapPin size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span>{personalInfo.location}</span>
             </div>
-          </FadeContentPrintable>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <Phone size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span>{personalInfo.phone}</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <a href={`mailto:${personalInfo.email}`} className={`break-all transition-colors duration-300 ${link}`}>
+                {personalInfo.email}
+              </a>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <Linkedin size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noreferrer" className={`break-all transition-colors duration-300 ${link}`}>
+                {personalInfo.linkedin}
+              </a>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <a href={`https://${personalInfo.github}`} target="_blank" rel="noreferrer" className={`break-all transition-colors duration-300 ${link}`}>
+                {personalInfo.github}
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>

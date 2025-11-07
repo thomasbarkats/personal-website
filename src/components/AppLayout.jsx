@@ -4,13 +4,11 @@ import Iridescence from '../blocks/Backgrounds/Iridescence/Iridescence';
 import LiquidChrome from '../blocks/Backgrounds/LiquidChrome/LiquidChrome';
 import { FloatingButtons } from './FloatingButtons';
 import { useTheme } from '../hooks/useTheme';
-import { usePrint } from '../hooks/usePrint';
 import { useParallax } from '../hooks/useParallax';
 
-export const AppLayout = ({ children, showPrintButton = false, centerContent = false }) => {
-  const { isDark, setIsDark, toggleTheme } = useTheme();
-  const { handlePrint, isTransitioningToPrint } = usePrint(isDark, setIsDark);
-  
+export const AppLayout = ({ children, centerContent = false }) => {
+  const { isDark, toggleTheme } = useTheme();
+
   // Parallax effect
   useParallax();
 
@@ -54,23 +52,15 @@ export const AppLayout = ({ children, showPrintButton = false, centerContent = f
         {React.cloneElement(children, { isDark })}
       </div>
 
-      <FloatingButtons 
-        isDark={isDark} 
-        toggleDark={toggleTheme} 
-        handlePrint={handlePrint}
-        showPrintButton={showPrintButton}
+      <FloatingButtons
+        isDark={isDark}
+        toggleDark={toggleTheme}
       />
-
-      {/* Overlay during print transition */}
-      {isTransitioningToPrint && (
-        <div className="fixed inset-0 bg-black z-50 print:hidden transition-opacity duration-300 h-full" />
-      )}
     </div>
   );
 };
 
 AppLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  showPrintButton: PropTypes.bool,
   centerContent: PropTypes.bool
 };
