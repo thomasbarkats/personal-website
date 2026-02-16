@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import PropTypes from 'prop-types';
-import DecryptedText from '../../blocks/TextAnimations/DecryptedText/DecryptedText';
-import { useThemeStyles } from '../../hooks/useThemeStyles';
+import { useThemeStyles } from '../hooks/useThemeStyles';
+
 
 export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
   const { getTextColor, link } = useThemeStyles(isDark);
@@ -25,10 +25,10 @@ export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
 
           {/* Name & Title */}
           <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 transition-colors duration-300 ${getTextColor('primary')}`}>
-            <DecryptedText text={personalInfo.name} animateOn="view" maxIterations={15} />
+            {personalInfo.name}
           </h1>
           <h2 className={`text-lg sm:text-xl mb-4 transition-colors duration-300 ${getTextColor('secondary')}`}>
-            <DecryptedText text={personalInfo.title} animateOn="view" maxIterations={15} />
+            {personalInfo.title}
           </h2>
 
           {/* Contact details */}

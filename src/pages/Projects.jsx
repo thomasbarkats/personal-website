@@ -8,6 +8,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 import { useFavicon } from '../hooks/useFavicon';
 import { useGithubPinnedRepos } from '../hooks/useGithubPinnedRepos';
 
+
 export const Projects = ({ isDark }) => {
   const navigate = useNavigate();
   const { getTextColor, cardBg, borderColor } = useThemeStyles(isDark);

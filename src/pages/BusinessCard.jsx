@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
+import info from '../info.json';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import info from '../info.json';
-import { CVHeader } from '../components/cv/CVHeader';
+import { CVHeader } from '../components/CVHeader';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 import { useTiltEffect } from '../hooks/useTiltEffect';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -52,7 +52,7 @@ export const BusinessCard = ({ isDark }) => {
 
         {/* Content with subtle 3D effect - only on desktop */}
         <div style={{ transform: isMobile ? undefined : 'translateZ(20px)' }}>
-          <CVHeader personalInfo={info} profileSrc={PROFILE_SRC}  isDark={isDark} />
+          <CVHeader personalInfo={info} profileSrc={PROFILE_SRC} isDark={isDark} />
 
           {/* View Projects Link */}
           <div className="mt-6 pt-4 border-t transition-colors duration-300" style={{

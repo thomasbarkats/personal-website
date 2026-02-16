@@ -3,6 +3,7 @@ import { AppLayout } from './components/AppLayout';
 import { BusinessCard } from './pages/BusinessCard';
 import { Projects } from './pages/Projects';
 
+
 export const App = () => {
   return (
     <Router>
