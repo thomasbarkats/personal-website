@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import info from '../info.json';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Moon, Sun } from 'lucide-react';
 import { CVHeader } from '../components/CVHeader';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 import { useTiltEffect } from '../hooks/useTiltEffect';
@@ -9,13 +9,13 @@ import { usePageTitle } from '../hooks/usePageTitle';
 import { useFavicon } from '../hooks/useFavicon';
 
 
-export const BusinessCard = ({ isDark }) => {
+export const BusinessCard = ({ isDark, toggleTheme }) => {
   const navigate = useNavigate();
   const { mainBg, link } = useThemeStyles(isDark);
   const { ref, transform, handlers, isMobile } = useTiltEffect({
-    rotateAmplitude: 12,
-    scale: 1.03,
-    perspective: 1200
+    rotateAmplitude: 6,
+    scale: 1.015,
+    perspective: 1400
   });
 
   const PROFILE_SRC = "https://raw.githubusercontent.com/thomasbarkats/assets/refs/heads/main/personal-website/profile.png";
@@ -58,13 +58,27 @@ export const BusinessCard = ({ isDark }) => {
           <div className="mt-6 pt-4 border-t transition-colors duration-300" style={{
             borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
           }}>
-            <button
-              onClick={() => navigate('/projects')}
-              className={`group w-full flex items-center justify-center gap-2 text-sm sm:text-base transition-all duration-300 ${link}`}
-            >
-              <span>View My Projects</span>
-              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            <div className="flex items-center">
+              <div className="w-8 shrink-0" />
+              <button
+                onClick={() => navigate('/projects')}
+                className={`group flex-1 flex items-center justify-center gap-2 text-sm sm:text-base transition-all duration-300 ${link}`}
+              >
+                <span>View My Projects</span>
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+              <button
+                onClick={toggleTheme}
+                aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
+                className={`w-8 shrink-0 flex items-center justify-center p-1.5 rounded-full opacity-25 hover:opacity-100 transition-all duration-300 ${
+                  isDark
+                    ? 'text-gray-300 hover:text-yellow-400 hover:bg-gray-700/50'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
+                }`}
+              >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -73,5 +87,6 @@ export const BusinessCard = ({ isDark }) => {
 };
 
 BusinessCard.propTypes = {
-  isDark: PropTypes.bool.isRequired
+  isDark: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired
 };

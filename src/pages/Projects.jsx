@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, ArrowLeft, Loader2, AlertCircle, Github, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Loader2, AlertCircle, Github, ArrowRight, Moon, Sun } from 'lucide-react';
 import info from '../info.json';
 import FadeContent from '../blocks/Animations/FadeContent/FadeContent';
 import { useThemeStyles } from '../hooks/useThemeStyles';
@@ -9,7 +9,7 @@ import { useFavicon } from '../hooks/useFavicon';
 import { useGithubPinnedRepos } from '../hooks/useGithubPinnedRepos';
 
 
-export const Projects = ({ isDark }) => {
+export const Projects = ({ isDark, toggleTheme }) => {
   const navigate = useNavigate();
   const { getTextColor, cardBg, borderColor } = useThemeStyles(isDark);
 
@@ -26,19 +26,32 @@ export const Projects = ({ isDark }) => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      {/* Back Button */}
+      {/* Header row: Back + theme toggle */}
       <FadeContent blur={true} duration={400} delay={0} threshold={0}>
-        <button
-          onClick={() => navigate('/')}
-          className={`mb-8 flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-            isDark
-              ? 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-              : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200/50'
-          }`}
-        >
-          <ArrowLeft size={20} />
-          <span>Back to Home</span>
-        </button>
+        <div className="mb-8 flex items-center justify-between">
+          <button
+            onClick={() => navigate('/')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+              isDark
+                ? 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200/50'
+            }`}
+          >
+            <ArrowLeft size={20} />
+            <span>Back to Home</span>
+          </button>
+          <button
+            onClick={toggleTheme}
+            aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
+            className={`p-2 rounded-full opacity-25 hover:opacity-100 transition-all duration-300 ${
+              isDark
+                ? 'text-gray-300 hover:text-yellow-400 hover:bg-gray-800/50'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
+            }`}
+          >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
       </FadeContent>
 
       {/* Loading State */}
@@ -153,5 +166,6 @@ export const Projects = ({ isDark }) => {
 };
 
 Projects.propTypes = {
-  isDark: PropTypes.bool.isRequired
+  isDark: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired
 };

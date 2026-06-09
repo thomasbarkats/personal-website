@@ -4,7 +4,6 @@ import Iridescence from '../blocks/Backgrounds/Iridescence/Iridescence';
 import LiquidChrome from '../blocks/Backgrounds/LiquidChrome/LiquidChrome';
 import { WebGLErrorBoundary } from './WebGLErrorBoundary';
 import { isWebGLSupported } from '../utils/webgl';
-import { FloatingButtons } from './FloatingButtons';
 import { useTheme } from '../hooks/useTheme';
 
 const GradientFallback = ({ isDark }) => (
@@ -59,14 +58,8 @@ export const AppLayout = ({ children, centerContent = false }) => {
       <div className={`relative z-10 h-full overflow-y-auto scrollbar-custom scrollable-content py-4 sm:py-6 lg:py-8 px-2 sm:px-4 lg:px-0 ${
         centerContent ? 'flex items-center justify-center min-h-screen' : ''
       }`}>
-        {/* Pass isDark to children */}
-        {React.cloneElement(children, { isDark })}
+        {React.cloneElement(children, { isDark, toggleTheme })}
       </div>
-
-      <FloatingButtons
-        isDark={isDark}
-        toggleDark={toggleTheme}
-      />
     </div>
   );
 };
