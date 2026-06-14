@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import { Github, Linkedin } from './icons/BrandIcons';
 import PropTypes from 'prop-types';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 

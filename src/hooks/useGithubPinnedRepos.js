@@ -11,11 +11,6 @@ export const useGithubPinnedRepos = (username) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!username) {
-      setLoading(false);
-      return;
-    }
-
     const fetchPinnedReposGraphQL = async () => {
       const query = `
         query {
@@ -103,6 +98,11 @@ export const useGithubPinnedRepos = (username) => {
     };
 
     const fetchPinnedRepos = async () => {
+      if (!username) {
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         setError(null);

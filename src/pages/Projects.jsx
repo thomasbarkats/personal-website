@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, ArrowLeft, Loader2, AlertCircle, Github, ArrowRight, Moon, Sun } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Loader2, AlertCircle, ArrowRight, Moon, Sun } from 'lucide-react';
+import { Github } from '../components/icons/BrandIcons';
 import info from '../info.json';
 import FadeContent from '../blocks/Animations/FadeContent/FadeContent';
 import { useThemeStyles } from '../hooks/useThemeStyles';
