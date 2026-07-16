@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "map.thomasb.space"
+        }
+      ],
+      "destination": "https://thomasbrkts.notion.site/I-ve-been-to-8c4a0a3ee8004606b7d3cb890b68ef3a",
+      "permanent": true
+    }
+  ]
+}
