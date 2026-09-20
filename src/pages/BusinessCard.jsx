@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import info from '../info.json';
+import { PROFILE_SRC } from '../constants';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Moon, Sun } from 'lucide-react';
 import { CVHeader } from '../components/CVHeader';
@@ -17,8 +18,6 @@ export const BusinessCard = ({ isDark, toggleTheme }) => {
     scale: 1.015,
     perspective: 1400
   });
-
-  const PROFILE_SRC = "https://raw.githubusercontent.com/thomasbarkats/assets/refs/heads/main/personal-website/profile.png";
 
   usePageTitle(info.name);
   useFavicon(PROFILE_SRC);

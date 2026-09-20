@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Github, Linkedin } from './icons/BrandIcons';
 import PropTypes from 'prop-types';
@@ -6,6 +7,7 @@ import { useThemeStyles } from '../hooks/useThemeStyles';
 
 export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
   const { getTextColor, link } = useThemeStyles(isDark);
+  const [isProfileLoaded, setIsProfileLoaded] = useState(false);
 
   return (
     <header className="mb-6 sm:mb-8">
@@ -18,7 +20,18 @@ export const CVHeader = ({ personalInfo, profileSrc, isDark }) => {
               ? 'bg-gray-700/70 border-gray-600/20' 
               : 'bg-gray-100/70 border-white/20'
           }`}>
-            <img src={profileSrc} alt="Profile" className="w-full h-full object-cover" />
+            <img
+              src={profileSrc}
+              alt="Profile"
+              width={288}
+              height={288}
+              fetchPriority="high"
+              decoding="async"
+              onLoad={() => setIsProfileLoaded(true)}
+              className={`w-full h-full object-cover transition-opacity duration-500 ${
+                isProfileLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
           </div>
         </div>
 

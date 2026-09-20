@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ExternalLink, ArrowLeft, Loader2, AlertCircle, ArrowRight, Moon, Sun } from 'lucide-react';
 import { Github } from '../components/icons/BrandIcons';
 import info from '../info.json';
+import { PROFILE_SRC } from '../constants';
 import FadeContent from '../blocks/Animations/FadeContent/FadeContent';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -19,8 +20,6 @@ export const Projects = ({ isDark, toggleTheme }) => {
 
   // Use GitHub projects if available, otherwise fall back to empty array
   const projects = githubProjects;
-
-  const PROFILE_SRC = "https://raw.githubusercontent.com/thomasbarkats/assets/refs/heads/main/personal-website/profile.png";
 
   usePageTitle(`${info.name} - Projects`);
   useFavicon(PROFILE_SRC);
