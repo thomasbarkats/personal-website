@@ -9,4 +9,4 @@
  *   cwebp -q 90 -resize 288 288 -metadata none <source> -o /tmp/p.webp
  *   cp /tmp/p.webp "public/profile.$(shasum -a 256 /tmp/p.webp | cut -c1-8).webp"
  */
-export const PROFILE_SRC = '/profile.03015b31.webp';
+export const PROFILE_SRC = '/profile.c85529a6.webp';
